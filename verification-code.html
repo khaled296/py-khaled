@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رمز التأكيد</title>
+  <link rel="stylesheet" href="css/verification-code.css">
+</head>
+<body>
+  <div class="verification-container">
+    <img src="images/user-icon.png" alt="User Icon" class="user-icon">
+    <h2>أدخل رمز التأكيد</h2>
+    <form id="verification-code-form">
+      <div class="code-inputs">
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+        <input type="text" maxlength="1" required>
+      </div>
+      <button type="submit">تحقق</button>
+    </form>
+  </div>
+  <script src="js/verification-code.js"></script>
+</body>
+</html>

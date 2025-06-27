@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #0d253f;
+        margin: 0;
+        padding: 0;
+        direction: rtl;
+      }
+
+      header {
+        background: #1b263b;
+        color: #fff;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; /* علشان تخلي تسجيل الخروج شمال */
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      header nav h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+
+      header nav a.logout-button {
+        background-color: #e74c3c;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      header nav a.logout-button:hover {
+        background-color: #c0392b;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .features {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .feature {
+        background: #1b263b;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .feature:hover {
+        transform: scale(1.03);
+      }
+
+      .feature a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .feature img {
+        width: 100px;
+        margin-bottom: 20px;
+      }
+
+      .feature h2 {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .features {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .feature {
+          width: 90%;
+        }
+
+        header nav {
+          flex-direction: column;
+        }
+
+        header nav h1,
+        header nav a.logout-button {
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html" class="logout-button">تسجيل الخروج</a>
+        <h1>الصفحة الرئيسية</h1>
+      </nav>
+    </header>
+
+    <main>
+      <section class="features">
+        <div class="feature">
+          <a href="drivers-data.html">
+            <img src="img/wallpaperflare.com_wallpaper.jpg" alt="User Icon" />
+            <h2>بيانات السائقين</h2>
+          </a>
+        </div>
+        <div class="feature">
+          <a href="add-tuk-tuk.html">
+            <img src="img/IMG-20250312-WA0007.jpg" alt="Tuk Tuk Icon" />
+            <h2>إضافة تكتوك جديد</h2>
+          </a>
+        </div>
+        <div class="feature">
+          <img src="img/download.png" alt="Dashboard Icon" />
+          <h2>لوحة التحكم</h2>
+          <button onclick="window.location.href='dashboard.html'">دخول</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/home.js"></script>
+  </body>
+</html>

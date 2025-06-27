@@ -1,0 +1,77 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #0d253f;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+header {
+  background: #1b263b;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* عشان يلف لو المساحة صغيرة */
+}
+
+header nav h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap; /* مهم للموبايل */
+  gap: 20px;
+}
+
+.feature {
+  background: #1b263b;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.feature img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.feature h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* ✅ ميديا كويري للشاشات الصغيرة */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 90%; /* عشان ياخد حجم مناسب للموبايل */
+  }
+}

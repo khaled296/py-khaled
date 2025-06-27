@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تفاصيل السائق</title>
+    <link rel="stylesheet" href="css/driver-data.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  </head>
+  <body>
+    <header>
+      <h1>تفاصيل السائق</h1>
+      <button onclick="window.location.href='drivers-data.html'">رجوع</button>
+    </header>
+
+    <main>
+      <div class="info-section">
+        <img src="images/user-icon.png" class="driver-img" />
+        <h2 id="driverName"></h2>
+        <p id="driverPhone"></p>
+        <p id="nationalId"></p>
+        <p id="tukTukNumber"></p>
+
+        <!-- ⭐ تقييم -->
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+
+        <!-- 📞 أزرار التواصل -->
+        <div class="contact-buttons">
+          <a id="callButton" class="btn" target="_blank">📞 اتصال</a>
+          <a id="whatsappButton" class="btn" target="_blank">💬 واتساب</a>
+        </div>
+      </div>
+
+      <!-- 🗺️ خريطة -->
+      <div id="map"></div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- إعداد الخريطة -->
+    <script>
+      const driver = JSON.parse(localStorage.getItem("selectedDriver"));
+      if (driver) {
+        document.getElementById(
+          "driverName"
+        ).textContent = `الاسم: ${driver.driverName}`;
+        document.getElementById(
+          "driverPhone"
+        ).textContent = `رقم الهاتف: ${driver.driverPhone}`;
+        document.getElementById(
+          "nationalId"
+        ).textContent = `الرقم القومي: ${driver.nationalId}`;
+        document.getElementById(
+          "tukTukNumber"
+        ).textContent = `رقم التوكتوك: ${driver.tukTukNumber}`;
+
+        const phone = driver.driverPhone.replace(/\s+/g, "");
+        document.getElementById("callButton").href = `tel:${phone}`;
+        document.getElementById(
+          "whatsappButton"
+        ).href = `https://wa.me/${phone}`;
+
+        // 🌍 إحداثيات طلخا
+        let lat = 31.0591;
+        let lng = 31.3785;
+
+        const map = L.map("map").setView([lat, lng], 15);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "OpenStreetMap",
+        }).addTo(map);
+
+        // 📍 ماركر متحرك
+        const marker = L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup("موقع التوكتوك")
+          .openPopup();
+
+        // 🏃 محاكاة حركة خفيفة
+        setInterval(() => {
+          lat += (Math.random() - 0.5) * 0.0005;
+          lng += (Math.random() - 0.5) * 0.0005;
+          marker.setLatLng([lat, lng]);
+          map.panTo([lat, lng]);
+        }, 2000); // كل ثانيتين يتحرك
+      }
+    </script>
+  </body>
+</html>
